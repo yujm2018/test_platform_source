@@ -16,6 +16,10 @@ class TestCase(models.Model):
     resp_assert = models.TextField("验证", default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
 
+    class Meta:
+        verbose_name = '测试用例'
+        verbose_name_plural = '测试用例'
+
     def __str__(self):
         return self.name
 
@@ -29,6 +33,10 @@ class TestTask(models.Model):
     status = models.IntegerField("状态：", default=0)  # 未执行、执行中、执行完成、排队中
     cases = models.TextField("关联用例", default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
+
+    class Meta:
+        verbose_name = '测试任务'
+        verbose_name_plural = '测试任务'
 
     def __str__(self):
         return self.name
@@ -47,6 +55,10 @@ class TestResult(models.Model):
     run_time = models.FloatField("运行时长")
     result = models.TextField("详细", default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
+
+    class Meta:
+        verbose_name = '测试结果'
+        verbose_name_plural = '测试结果'
 
     def __str__(self):
         return self.name
