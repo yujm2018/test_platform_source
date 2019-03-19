@@ -14,21 +14,23 @@ def login_action(request):
     if request.method == "POST":
         username = request.POST.get("username", "")
         password = request.POST.get("password", "")
-        
+
         if username == "" or password == "":
-            return render(request, "index.html", 
+            return render(request, "index.html",
                           {"error": "用户名或者密码为空"}
-                         )
+                          )
         else:
-            user = auth.authenticate(username=username, password=password)  # 验证用户是不是存在
-            
+            user = auth.authenticate(
+                username=username,
+                password=password)  # 验证用户是不是存在
+
             if user is not None:
-                auth.login(request, user) #记录用户登录状态
+                auth.login(request, user)  # 记录用户登录状态
                 request.session['user1'] = username
                 return HttpResponseRedirect('/manage/project_manage/')
             else:
                 return render(request, "index.html",
-                                        {"error": "用户名或者密码错误"})
+                              {"error": "用户名或者密码错误"})
     else:
         return render(request, "index.html")
 
@@ -38,8 +40,6 @@ def logout(request):
     auth.logout(request)  # 清楚用户登录状态
     response = HttpResponseRedirect('/')
     return response
-
-
 
 
 """
