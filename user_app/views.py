@@ -37,7 +37,7 @@ def login_action(request):
 # 退出登录
 @login_required
 def logout(request):
-    auth.logout(request)  # 清楚用户登录状态
+    auth.logout(request)  # 清除用户登录状态
     response = HttpResponseRedirect('/')
     return response
 
