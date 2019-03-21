@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # 获取用例列表
 def case_manage(request):
     testcases = TestCase.objects.get_queryset().order_by('id')
-    paginator = Paginator(testcases, 10)
+    paginator = Paginator(testcases, 6)
 
     page = request.GET.get('page')
     try:
@@ -39,7 +39,7 @@ def search_case_name(request):
         case_name = request.GET.get('case_name', "")
         cases = TestCase.objects.filter(name__contains=case_name)
         
-        paginator = Paginator(cases, 10)
+        paginator = Paginator(cases, 6)
         page = request.GET.get('page')
         try:
             contacts = paginator.page(page)
