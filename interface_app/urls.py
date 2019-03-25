@@ -5,7 +5,6 @@ from interface_app.views import testtask_view
 from interface_app.views import testtask_api
 
 
-
 urlpatterns = [
     # guest system interface:
     # ex : /interface/case_manage/
@@ -39,5 +38,3 @@ urlpatterns = [
     path('delete_task/', testtask_api.delete_task),
 
 ]
-
-

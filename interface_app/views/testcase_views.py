@@ -22,7 +22,7 @@ def case_manage(request):
     except EmptyPage:
         # 如果页数超出查询范围，取最后一页
         contacts = paginator.page(paginator.num_pages)
-    
+
     if request.method == "GET":
         return render(request, "case_manage.html", {
             "type": "list",
@@ -34,11 +34,11 @@ def case_manage(request):
 
 # 根据用例名称搜索
 def search_case_name(request):
-    
+
     if request.method == "GET":
         case_name = request.GET.get('case_name', "")
         cases = TestCase.objects.filter(name__contains=case_name)
-        
+
         paginator = Paginator(cases, 6)
         page = request.GET.get('page')
         try:
@@ -49,7 +49,7 @@ def search_case_name(request):
         except EmptyPage:
             # 如果页数超出查询范围，取最后一页
             contacts = paginator.page(paginator.num_pages)
-        
+
         return render(request, "case_manage.html", {
             "type": "list",
             "testcases": contacts,
