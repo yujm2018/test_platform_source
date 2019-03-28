@@ -2,11 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from interface_app.models import TestTask, TestResult
 
-
 """
 说明：接口任务文件，返回HTML页面
 """
-
 
 # 获取任务列表
 def task_manage(request):
